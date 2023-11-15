@@ -170,7 +170,7 @@ export default class Sessions {
 
       let result = await transport.sendMail({
         from: "Coder test",
-        to: "guille.13577@gmail.com",
+        to: email,
         subject: "Cambio de contraseña",
         html:
           `
@@ -330,7 +330,7 @@ export default class Sessions {
     const user = new userDTO(req.user)
     const userdb = await UserModel.findOne({ email: user.email })
 
-    return res.send(userdb)
+    return res.status(200).json({ payload: userdb })
   }
 
   changeRole = async (req, res) => {
@@ -363,7 +363,20 @@ export default class Sessions {
     res.cookie("coderCookieToken", token, {
       maxAge: 60 * 60 * 1000,
       httpOnly: true
-    }).status(200).json({ message: "success" })
+    }).status(200).json({ message: "success", user })
 
+  }
+
+  deleteUser = async (req, res) => {
+    const { uid } = req.params
+    const user = await UserModel.findById(uid)
+    if (!user) {
+      req.logger.error(`Error al eliminar un usuario : No se encuentra en la base de datos!`)
+      return res.status(401).json({ message: "El usuario no existe!" })
+    } else {
+      await UserModel.findByIdAndDelete(uid)
+      req.logger.warning(`El usuario ${user.email} ha sido eliminado! - DATE:${new Date().toLocaleTimeString()}`)
+      return res.status(200).json({ message: "success", id: user._id })
+    }
   }
 }

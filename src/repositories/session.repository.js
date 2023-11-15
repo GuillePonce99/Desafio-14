@@ -33,4 +33,8 @@ export default class SessionRepository {
     changeRole = async (req, res) => {
         return await this.dao.changeRole(req, res)
     }
+
+    deleteUser = async (req, res) => {
+        return await this.dao.deleteUser(req, res)
+    }
 }

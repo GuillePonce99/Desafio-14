@@ -83,7 +83,6 @@ const changeRole = () => {
         const resultTwo = await fetch(`/api/sessions/premium/${uid}`)
 
         if (resultTwo.ok) {
-            console.log(await resultTwo.json());
             Toastify({
                 text: `✅`,
                 duration: 2000,

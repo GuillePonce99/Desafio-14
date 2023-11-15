@@ -16,7 +16,6 @@ const signup = async (firstName, lastName, age, email, password) => {
         return true
     } else {
         const data = await response.json()
-        console.log(data);
         return data.name
     }
 }
@@ -35,7 +34,6 @@ const login = async (email, password) => {
         return true
     } else {
         const data = await response.json()
-        console.log(data);
         return data.name
     }
 }
@@ -190,7 +188,6 @@ if (btnSignup) {
         const email = document.getElementById("email").value
 
         const result = await forgot(email)
-        console.log(result);
 
         if (result === true) {
             Toastify({

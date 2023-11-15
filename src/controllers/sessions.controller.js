@@ -26,3 +26,7 @@ export const current = async (req, res) => {
 export const changeRole = async (req, res) => {
     return await sessionsServices.changeRole(req, res)
 }
+
+export const deleteUser = async (req, res) => {
+    return await sessionsServices.deleteUser(req, res)
+}

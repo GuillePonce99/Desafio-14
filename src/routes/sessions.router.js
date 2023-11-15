@@ -1,4 +1,4 @@
-import { login, loginGitHub, signup, forgot, logout, current, newPassword, changeRole } from "../controllers/sessions.controller.js";
+import { login, loginGitHub, signup, forgot, logout, current, newPassword, changeRole, deleteUser } from "../controllers/sessions.controller.js";
 import { passportCall } from "../utils.js";
 import Routes from "./router.js";
 
@@ -33,6 +33,9 @@ export default class SessionRouter extends Routes {
 
         //Ruta para cambiar rol de usuario
         this.get("/premium/:uid", ["USER", "USER_PREMIUM", "ADMIN"], changeRole)
+
+        //Ruta para eliminar un usuario
+        this.delete("/deleteUser/:uid", ["USER", "USER_PREMIUM", "ADMIN"], deleteUser)
     }
 }
 

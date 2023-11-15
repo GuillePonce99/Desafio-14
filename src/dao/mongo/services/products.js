@@ -10,7 +10,7 @@ import Config from "../../../config/config.js";
 export default class Products {
     constructor() { }
     getProductById = async (pid, req, res) => {
-
+        console.log(pid);
         try {
             const product = await ProductModel.findOne({ code: pid })
             if (!product) {
@@ -68,7 +68,6 @@ export default class Products {
             user = await UserModel.findOne({ email: userToken.email })
         }
 
-        console.log(userToken);
         try {
 
             const product = {
@@ -172,7 +171,7 @@ export default class Products {
 
             req.logger.info(`Se ha actualizado el producto ${actualizado.title} - DATE:${new Date().toLocaleTimeString()}`)
 
-            res.status(200).json({ message: "success", data: actualizado })
+            res.status(200).json({ message: "success", result: actualizado })
 
         }
         catch (error) {

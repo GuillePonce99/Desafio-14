@@ -74,7 +74,7 @@ export default class Carts {
 
             req.logger.info(`Se ha creado el carrito ID: ${cart._id} - DATE:${new Date().toLocaleTimeString()}`)
 
-            res.status(200).json({ message: `CARRITO CREADO ID: ${cart._id}`, id: cart._id })
+            res.status(200).json({ message: `CARRITO CREADO ID: ${cart._id}`, id: cart._id, user, cart })
 
 
         }
@@ -145,7 +145,7 @@ export default class Carts {
 
             if (cart.deletedCount) {
                 req.logger.info(`Se ha eliminado el carrito ID: ${cid} - DATE:${new Date().toLocaleTimeString()}`)
-                res.status(200).json({ message: `CARRITO N° ${cid} ELIMINADO` })
+                res.status(200).json({ message: `CARRITO N° ${cid} ELIMINADO`, status: "success" })
 
             } else {
                 req.logger.error(`Error al eliminar el carrito ID: ${cid} : No se ha encontrado un carrito con este ID!`)
@@ -203,7 +203,7 @@ export default class Carts {
 
             req.logger.info(`Se ha eliminado el producto ID: ${pid} del carrito ID: ${cid} - DATE:${new Date().toLocaleTimeString()}`)
 
-            res.status(200).json({ message: `PRODUCTO ID: ${pid} ELIMINADO DEL CARRITO` })
+            res.status(200).json({ message: `PRODUCTO ID: ${pid} ELIMINADO DEL CARRITO`, data: carrito })
 
         }
 
