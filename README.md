@@ -1,8 +1,9 @@
-# Desafio-13
+# Desafio-14
 *Comandos:
 1-Cambiar persistencia: -n --persistence (default: MONGO) (options: MONGO,MEMORY)
 2-Cambiar puerto: -p --port
 3-Cambiar entorno: -e --environment (default: DEV), (options: DEV,PROD,PRODUCTION)
+4- npm test (iniciar testing)
 
 ROLES DISPONIBLES : "admin", "user", "user_premium"
 
